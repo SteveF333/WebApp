@@ -14,14 +14,11 @@
   </iframe>
   <script>
     var url = new URL(window.location.href);
-    var p = url.searchParams.get("p");
-    if(p!="test"){
-        var elem = document.getElementById("iframe");
-        elem.src = "https://script.google.com/macros/s/AKfycbyJz_NjUSZ3iMGJvo6j6b5z_Vb_BbTOQ_fcDTX3d-AeNmyh0hKEKvXP3izUTb4TRt1Ymw/exec";
-    }
-    else if(p=="test"){
-        var elem = document.getElementById("iframe");
-        elem.src = "https://script.google.com/macros/s/AKfycbyJz_NjUSZ3iMGJvo6j6b5z_Vb_BbTOQ_fcDTX3d-AeNmyh0hKEKvXP3izUTb4TRt1Ymw/exec?v=form";
+    var v = url.searchParams.get("v");
+    var elem = document.getElementById("iframe");
+    elem.src = "https://script.google.com/macros/s/AKfycbyJz_NjUSZ3iMGJvo6j6b5z_Vb_BbTOQ_fcDTX3d-AeNmyh0hKEKvXP3izUTb4TRt1Ymw/exec";
+    if(v!=""){
+        elem.src += "?v="+v;
     }
   </script>
 </body>
