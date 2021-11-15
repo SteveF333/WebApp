@@ -11,7 +11,7 @@
     frameborder="5">
   </iframe>
   <script>
-    var url = new URL(url_string);
+    var url = new URL(window.location.href);
     var p = url.searchParams.get("p");
     if(p!="test"){
         var elem = document.getElementById("iframe");
