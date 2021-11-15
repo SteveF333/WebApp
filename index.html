@@ -6,6 +6,39 @@
     <title>GoogleWebApp</title>
 </head>
 <script> 
+    // Create an iframe:
+    const iframe = document.createElement('iframe');
+
+    // Put it in the document (but hidden):
+    iframe.style.display = 'none';
+    document.body.appendChild(iframe);
+
+    // Wait for the iframe to be ready:
+    iframe.onload = () => {
+      // Ignore further load events:
+      iframe.onload = null;
+
+      // Write a dummy tag:
+      iframe.contentDocument.write('<streaming-element>');
+
+      // Get a reference to that element:
+      const streamingElement = iframe.contentDocument.querySelector(
+        'streaming-element',
+      );
+
+      // Pull it out of the iframe & into the parent document:
+      document.body.appendChild(streamingElement);
+
+      // Write some more content - this should be done async:
+      iframe.contentDocument.write('<p>Hello!</p>');
+
+      // Keep writing content like above, and then when we're done:
+      iframe.contentDocument.write('</streaming-element>');
+      iframe.contentDocument.close();
+    };
+
+    // Initialise the iframe
+    iframe.src = 'https://script.google.com/macros/s/AKfycbyJz_NjUSZ3iMGJvo6j6b5z_Vb_BbTOQ_fcDTX3d-AeNmyh0hKEKvXP3izUTb4TRt1Ymw/exec';
 </script>
 <body>
   <iframe rel="prerender" src="https://script.google.com/macros/s/AKfycbyJz_NjUSZ3iMGJvo6j6b5z_Vb_BbTOQ_fcDTX3d-AeNmyh0hKEKvXP3izUTb4TRt1Ymw/exec"
